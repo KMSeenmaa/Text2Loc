@@ -105,10 +105,16 @@ def extract_objects(xyz, rgb, lbl, iid):
 
 
 def gather_objects(path_input, folder_name):
-    """Gather the objects of a scene"""
+    """
+    Gather the objects of a scene.
+
+    folder_name = name of the scene
+    
+    """
     print(f"Loading objects for {folder_name}")
 
     path = osp.join(path_input, "data_3d_semantics", folder_name, "static")
+    path = osp.join(path_input, folder_name, "3d_semantics")
     assert osp.isdir(path)
     file_names = [f for f in os.listdir(path) if not f.startswith("._")]
 
@@ -188,7 +194,7 @@ def get_close_locations(
 
 def create_locations(path_input, folder_name, location_distance, return_location_objects=False):
     """Sample locations along the original trajectories with at least location_distance between any two locations."""
-    path = osp.join(path_input, "data_poses", folder_name, "poses.txt")
+    path = osp.join(path_input, folder_name, "poses.txt")
     poses = np.loadtxt(path)
     poses = poses[:, 1:].reshape((-1, 3, 4))  # Convert to 3x4 matrices
     poses = poses[:, :, -1]  # Take last column
@@ -220,7 +226,7 @@ def create_cells(objects, locations, scene_name, cell_size, args) -> List[Cell]:
     none_indices = []
     locations = np.array(locations)
 
-    assert len(scene_name.split("_")) == 6
+    # assert len(scene_name.split("_")) == 6  # TODO: Why?
     scene_name_short = scene_name.split("_")[-2]
 
     # Additionally shift each cell-location up, down, left and right by cell_dist / 2
@@ -452,7 +458,7 @@ if __name__ == "__main__":
         return_location_objects=True,
     )
 
-    path_objects = osp.join(args.path_in, "objects", f"{args.scene_name}.pkl")
+    path_objects = osp.join(args.path_in, args.scene_name, "objects", f"{args.scene_name}.pkl")
     path_cells = osp.join(args.path_out, "cells", f"{args.scene_name}.pkl")
     path_poses = osp.join(args.path_out, "poses", f"{args.scene_name}.pkl")
 

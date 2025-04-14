@@ -34,9 +34,9 @@ def parse_arguments():
     args = parser.parse_args()
 
     assert osp.isdir(args.path_in)
-    assert osp.isdir(
-        osp.join(args.path_in, "data_3d_semantics", args.scene_name)
-    ), f'Input folder not found {osp.join(args.path_in, "data_3d_semantics", args.scene_name)}'
+    # assert osp.isdir(
+    #     osp.join(args.path_in, "data_3d_semantics", args.scene_name)
+    # ), f'Input folder not found {osp.join(args.path_in, "data_3d_semantics", args.scene_name)}'
 
     attribs = [
         args.path_out,

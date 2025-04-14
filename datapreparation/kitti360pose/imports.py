@@ -231,7 +231,7 @@ class Cell:
         """
         self.scene_name = scene_name
         self.id = f"{scene_name}_{idx:05.0f}"  # Incrementing alpha-numeric id in format 00XX_XXXXX
-        assert len(self.id) == 10, self.id
+        # assert len(self.id) == 10, self.id  # TODO: Why?
         self.objects = objects
         # self.descriptions = descriptions
         # self.pose = pose
