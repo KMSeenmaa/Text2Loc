@@ -51,7 +51,7 @@ def parse_arguments():
         "bestCell" if args.describe_best_cell else None,
         "noOntop" if args.no_ontop else None,
     ]
-    args.path_out = "_".join([a for a in attribs if a != None])
+    # args.path_out = "_".join([a for a in attribs if a != None])
 
     print(f"Folders: {args.path_in} -> {args.path_out}")
 

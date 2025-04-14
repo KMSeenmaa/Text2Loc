@@ -1,5 +1,9 @@
 """Module to prepare the original Kitti360 into Kitti360Pose
 """
+# import debugpy
+# debugpy.listen(("0.0.0.0", 5678))  # or use 127.0.0.1 if you're local-only
+# print("⏳ Waiting for debugger to attach...")
+# debugpy.wait_for_client()  # <-- Optional: pause until debugger attaches
 
 from typing import List
 
@@ -462,11 +466,11 @@ if __name__ == "__main__":
     if not os.path.exists(path_dir_objects):
         os.makedirs(path_dir_objects)
 
-    path_dir_cells = osp.join(args.path_out, "cells")
+    path_dir_cells = osp.join(args.path_out, "out", "cells")
     if not os.path.exists(path_dir_cells):
         os.makedirs(path_dir_cells)
 
-    path_dir_poses = osp.join(args.path_out, "poses")
+    path_dir_poses = osp.join(args.path_out, "out", "poses")
     if not os.path.exists(path_dir_poses):
         os.makedirs(path_dir_poses)
 

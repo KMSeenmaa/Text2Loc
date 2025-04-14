@@ -9,7 +9,7 @@ export HF_HOME=$WORKON_HOME/adlcv
 module swap gcc/9.5.0-binutils-2.38
 module swap cuda/11.3
 
-python -m evaluation.pipeline --base_path ./data/k360_30-10_scG_pd10_pc4_spY_all/ \
+python -m evaluation.pipeline --base_path /dtu/blackhole/17/202487/adlcv_project/data/scannet/scans/out \
     --use_features "class"  "color"  "position"  "num" \
     --no_pc_augment \
     --no_pc_augment_fine \
