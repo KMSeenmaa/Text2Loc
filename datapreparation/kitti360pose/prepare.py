@@ -458,9 +458,21 @@ if __name__ == "__main__":
         return_location_objects=True,
     )
 
-    path_objects = osp.join(args.path_in, args.scene_name, "objects", f"{args.scene_name}.pkl")
-    path_cells = osp.join(args.path_out, "cells", f"{args.scene_name}.pkl")
-    path_poses = osp.join(args.path_out, "poses", f"{args.scene_name}.pkl")
+    path_dir_objects = osp.join(args.path_in, args.scene_name, "objects")
+    if not os.path.exists(path_dir_objects):
+        os.makedirs(path_dir_objects)
+
+    path_dir_cells = osp.join(args.path_out, "cells")
+    if not os.path.exists(path_dir_cells):
+        os.makedirs(path_dir_cells)
+
+    path_dir_poses = osp.join(args.path_out, "poses")
+    if not os.path.exists(path_dir_poses):
+        os.makedirs(path_dir_poses)
+
+    path_objects = osp.join(path_dir_objects, f"{args.scene_name}.pkl")
+    path_cells = osp.join(path_dir_cells, f"{args.scene_name}.pkl")
+    path_poses = osp.join(path_dir_poses, f"{args.scene_name}.pkl")
 
     t_start = time.time()
 
